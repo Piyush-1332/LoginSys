@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock%}
+{% block ul %}
+  <li><a class="navbar-brand" href="/myapp/logout">Logout</a></li>
+{% endblock %}
+{% block body%}
+{% if user.is_authenticated %}
+<div class="container">
+  <h1>Profile</h1>
+  <p>
+      <h5>User Name: {{user}}</h5>
+      <h5>First Name: {{user.first_name}}</h5>
+      <h5>Last Name: {{ user.last_name }}</h5>
+      <h5>Email: {{ user.email }}</h5>
+  </p>
+  <br><br>
+  <form action="/myapp/profile/edit">
+    <button type="submit">UpdateInfo</button>
+</form>
+</div>
+{% else %}
+<div class="container">
+  <h1>You are Not logged In!!</h1>
+</div>
+{% endif %}
+{% endblock %}
